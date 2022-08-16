@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //propriedades/dados da classe
+    public static int score = 0;
+
+    //propriedades/dados do objeto
     [SerializeField]
     private List<GameObject> targets;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnTargets());
+        StartGame();
+        Debug.Log(score);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void StartGame()
+    {
+        this.StartCoroutine(SpawnTargets());
+        GameManager.score = 0;
     }
 
     private IEnumerator SpawnTargets()

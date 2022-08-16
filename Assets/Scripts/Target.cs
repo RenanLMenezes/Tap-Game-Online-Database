@@ -5,7 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     private float minSpeed = 14f;
-    private float maxSpeed = 20f;
+    private float maxSpeed = 18f;
     private float maxTorque = 5f;
     private float xRange = 5f;
     private float ySpawnPos= -6f;
@@ -43,4 +43,15 @@ public class Target : MonoBehaviour
     {
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
     }
+
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+        if (this.tag == "GoodTarget")
+        {
+            GameManager.score += 1;
+        }
+        Debug.Log(GameManager.score);
+    }
+
 }

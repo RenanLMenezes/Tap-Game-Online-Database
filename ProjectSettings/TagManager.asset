@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bad Itens
-  - Good Itens
+  - BadTarget
+  - GoodTarget
   layers:
   - Default
   - TransparentFX
