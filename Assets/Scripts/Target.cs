@@ -11,6 +11,11 @@ public class Target : MonoBehaviour
     private float ySpawnPos= -6f;
     private Rigidbody rb;
 
+    [SerializeField]
+    private int _score;
+    [SerializeField]
+    private float _time;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +25,8 @@ public class Target : MonoBehaviour
 
         rb.AddForce(RandomForce(), ForceMode.Impulse);
         rb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
-        
+
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
@@ -47,9 +53,15 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
-        if (this.tag == "GoodTarget")
+        if (this.tag == "GoodTarget" && GameManager.time > 0)
         {
-            GameManager.score += 1;
+            GameManager.score += _score;
+            GameManager.time += _time;
+        }
+
+        if (this.tag == "BadTarget" && GameManager.time > 0)
+        {
+            GameManager.time -= _time;
         }
         Debug.Log(GameManager.score);
     }
