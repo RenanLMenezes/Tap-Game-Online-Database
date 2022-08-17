@@ -7,14 +7,17 @@ public class GameManager : MonoBehaviour
 {
     //propriedades/dados da classe
     public static int score = 0;
+    public static int highScore = 0;
     public static float time;
-    private int maxSpawn = 0;
-    private float timeSpawn = 0;
+    public static string nickname = "";
+    public static string nicknameHighScore = "";
 
 
     //propriedades/dados do objeto
     [SerializeField]
     private List<GameObject> targets;
+    private int maxSpawn = 0;
+    private float timeSpawn = 0;
 
     //propriedadades da HUD
     [SerializeField]
