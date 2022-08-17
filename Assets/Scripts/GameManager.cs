@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime;
         UpdateHUD();
+        if (time <= 0)
+        {
+            Invoke("GoGameOver", 2);
+        }
     }
 
     private void UpdateHUD()
@@ -81,5 +86,10 @@ public class GameManager : MonoBehaviour
                 Instantiate(targets[index]);
             }
         }
+    }
+
+    private void GoGameOver()
+    {
+        SceneManager.LoadScene(2);
     }
 }

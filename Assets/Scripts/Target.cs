@@ -10,6 +10,7 @@ public class Target : MonoBehaviour
     private float xRange = 5f;
     private float ySpawnPos= -6f;
     private Rigidbody rb;
+    private AudioSource sfx;
 
     [SerializeField]
     private int _score;
@@ -20,6 +21,7 @@ public class Target : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        sfx = GetComponent<AudioSource>();
 
         transform.position = RandomSpawnPos();
 
@@ -52,7 +54,9 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Destroy(gameObject);
+        sfx.Play();
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         if (this.tag == "GoodTarget" && GameManager.time > 0)
         {
             GameManager.score += _score;
@@ -64,6 +68,7 @@ public class Target : MonoBehaviour
             GameManager.time -= _time;
         }
         Debug.Log(GameManager.score);
+        Destroy(gameObject, 1f);
     }
 
 }
