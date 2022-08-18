@@ -2,29 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private TMP_InputField nick;
 
     public void StartGame ()
     {
+        nick = GameObject.Find("Username").GetComponent<TMP_InputField>();
+        GameManager.GetPlayer(nick.text);
         SceneManager.LoadScene(1);
     }
 
     public void CreateUser()
     {
-        Application.OpenURL("http://youtube.com");
+        Application.OpenURL("https://hidden-bastion-61343.herokuapp.com");
     }
 
     public void ExitGame()

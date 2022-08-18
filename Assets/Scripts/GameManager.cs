@@ -13,6 +13,29 @@ public class GameManager : MonoBehaviour
     public static string nickname = "";
     public static string nicknameHighScore = "";
 
+    //banco de dados da classe
+    public static User player;
+    public static User playerHighScore;
+
+    //metodos da classe
+    public static async void GetPlayer(string nick)
+    {
+        player = await ServiceAPI.GetUser(nick);
+    }
+    public static async void GetPlayerHighScore(string nick)
+    {
+        playerHighScore = await ServiceAPI.GetUser();
+        if(playerHighScore != null)
+        {
+            highScore = playerHighScore.score;
+            nicknameHighScore = playerHighScore.nick;
+        }
+    }
+
+    public static async void SetScore()
+    {
+        ServiceAPI.SetScore(nickname, score);
+    }
 
     //propriedades/dados do objeto
     [SerializeField]

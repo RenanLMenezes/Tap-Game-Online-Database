@@ -14,6 +14,7 @@ public class GameOverManager : MonoBehaviour
     {
         score.text = $"Your Score: {GameManager.score}";
         highScore.text = $"Your Score: {GameManager.nicknameHighScore} - {GameManager.highScore}";
+        GameManager.SetScore();
         Invoke("GoMenu", 7f);
     }
 
